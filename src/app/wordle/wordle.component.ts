@@ -14,11 +14,13 @@ export class WordleComponent implements OnInit {
   showAlert: boolean;
   showWin: boolean;
   showLost: boolean;
+  showInvalid: boolean;
 
   constructor(private wordleService: WordleService) {
     this.showAlert = false;
     this.showWin = false;
     this.showLost = false;
+    this.showInvalid = false;
     this.numRow = 0;
     this.numLetter = 0;
     this.squares = [];
@@ -58,6 +60,11 @@ export class WordleComponent implements OnInit {
       letters.push(this.squares[this.numRow][i]);
     }
     this.wordleService.wordle(letters).subscribe(response => {
+      if(response.wordleStatus == "Invalid") {
+        this.showInvalid = true;
+        setTimeout(() => this.showInvalid = false, 2000);
+        return;
+      }
       this.markSquares(response.letterStatusList);
       if(response.wordleStatus == "Completed") {
         this.showWin = true;

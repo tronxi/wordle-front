@@ -37,6 +37,12 @@
     </div>
   </div>
 
+  <div *ngIf="showInvalid" class="square-row">
+    <div  class="alert alert-warning">
+      La palabra no existe
+    </div>
+  </div>
+
   <div *ngIf="showLost" class="square-row">
     <div class="alert alert-danger">
       Has perdido!
