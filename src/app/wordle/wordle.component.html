@@ -1,0 +1,86 @@
+
+  <h1>Wordle</h1>
+  <div class="square-row">
+    <span *ngFor="let number of [0,1,2,3,4]">
+          <app-square [id]="'0'+number" class="square" [text]="squares[0][number]"></app-square>
+    </span>
+  </div>
+  <div class="square-row">
+    <span *ngFor="let number of [0,1,2,3,4]">
+          <app-square [id]="'1'+number" class="square" [text]="squares[1][number]"></app-square>
+    </span>
+  </div>
+  <div class="square-row">
+    <span *ngFor="let number of [0,1,2,3,4]">
+          <app-square [id]="'2'+number" class="square" [text]="squares[2][number]"></app-square>
+    </span>
+  </div>
+  <div class="square-row">
+    <span *ngFor="let number of [0,1,2,3,4]">
+          <app-square [id]="'3'+number" class="square" [text]="squares[3][number]"></app-square>
+    </span>
+  </div>
+  <div class="square-row">
+    <span *ngFor="let number of [0,1,2,3,4]">
+          <app-square [id]="'4'+number" class="square" [text]="squares[4][number]"></app-square>
+    </span>
+  </div>
+  <div class="square-row">
+    <span *ngFor="let number of [0,1,2,3,4]">
+          <app-square [id]="'5'+number" class="square" [text]="squares[5][number]"></app-square>
+    </span>
+  </div>
+
+  <div *ngIf="showAlert" class="square-row">
+    <div  class="alert alert-warning">
+      No hay suficientes letras para una palabra
+    </div>
+  </div>
+
+  <div *ngIf="showLost" class="square-row">
+    <div class="alert alert-danger">
+      Has perdido!
+    </div>
+  </div>
+
+  <div *ngIf="showWin" class="square-row">
+    <div class="alert alert-success">
+      Has ganado!
+    </div>
+  </div>
+
+  <div class="key-row">
+    <app-key text="Q" id="q" class="key" (click)="clickKey('Q')"></app-key>
+    <app-key text="W" id="w" class="key" (click)="clickKey('W')"></app-key>
+    <app-key text="E" id="e" class="key" (click)="clickKey('E')"></app-key>
+    <app-key text="R" id="r" class="key" (click)="clickKey('R')"></app-key>
+    <app-key text="T" id="t" class="key" (click)="clickKey('T')"></app-key>
+    <app-key text="Y" id="y" class="key" (click)="clickKey('Y')"></app-key>
+    <app-key text="U" id="u" class="key" (click)="clickKey('U')"></app-key>
+    <app-key text="I" id="i" class="key" (click)="clickKey('I')"></app-key>
+    <app-key text="O" id="o" class="key" (click)="clickKey('O')"></app-key>
+    <app-key text="P" id="p" class="key" (click)="clickKey('P')"></app-key>
+  </div>
+  <div class="key-row">
+    <app-key text="A" id="a" class="key" (click)="clickKey('A')"></app-key>
+    <app-key text="S" id="s" class="key" (click)="clickKey('S')"></app-key>
+    <app-key text="D" id="d" class="key" (click)="clickKey('D')"></app-key>
+    <app-key text="F" id="f" class="key" (click)="clickKey('F')"></app-key>
+    <app-key text="G" id="g" class="key" (click)="clickKey('G')"></app-key>
+    <app-key text="H" id="h" class="key" (click)="clickKey('H')"></app-key>
+    <app-key text="J" id="j" class="key" (click)="clickKey('J')"></app-key>
+    <app-key text="K" id="k" class="key" (click)="clickKey('K')"></app-key>
+    <app-key text="L" id="l" class="key" (click)="clickKey('L')"></app-key>
+    <app-key text="Ñ" id="ñ" class="key" (click)="clickKey('Ñ')"></app-key>
+  </div>
+  <div class="key-row">
+    <app-key text="ENTER" id="enter" class="key" (click)="clickEnter()"></app-key>
+    <app-key text="Z" id="z" class="key" (click)="clickKey('Z')"></app-key>
+    <app-key text="X" id="x" class="key" (click)="clickKey('X')"></app-key>
+    <app-key text="C" id="c" class="key" (click)="clickKey('C')"></app-key>
+    <app-key text="V" id="v" class="key" (click)="clickKey('V')"></app-key>
+    <app-key text="B" id="b" class="key" (click)="clickKey('B')"></app-key>
+    <app-key text="N" id="n" class="key" (click)="clickKey('N')"></app-key>
+    <app-key text="M" id="m" class="key" (click)="clickKey('M')"></app-key>
+    <app-key text="DEL" id="del" class="key" (click)="clickDel()"></app-key>
+  </div>

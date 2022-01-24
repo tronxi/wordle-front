@@ -1,0 +1,115 @@
+h1{
+  text-align: center;
+}
+.square-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.key-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.key {
+  background-color: lightgrey;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.failed-key {
+  background-color: gray;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.unordered-key {
+  background-color: orange;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.ordered-key {
+  background-color: greenyellow;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.key:hover {
+  cursor: pointer;
+}
+.failed-key:hover {
+  cursor: pointer;
+}
+.ordered-key:hover {
+   cursor: pointer;
+}
+.unordered-key:hover {
+    cursor: pointer;
+}
+
+.alert {
+  width: 350px;
+  display: flex;
+  justify-content: center;
+}
+
+.square {
+  border: solid gray;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.failed-square {
+  border: solid gray;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: gray;
+}
+
+.unordered-square {
+  border: solid gray;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: orange;
+}
+
+.ordered-square {
+  border: solid gray;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: greenyellow;
+}
