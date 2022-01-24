@@ -57,6 +57,7 @@ export class WordleComponent implements OnInit {
     if(this.numLetter != 5) {
       this.showAlert = true;
       setTimeout(() => this.showAlert = false, 2000);
+      this.canEnter = true;
       return;
     }
     let letters = [];
@@ -67,6 +68,7 @@ export class WordleComponent implements OnInit {
       if(response.wordleStatus == "Invalid") {
         this.showInvalid = true;
         setTimeout(() => this.showInvalid = false, 2000);
+        this.canEnter = true;
         return;
       }
       this.markSquares(response.letterStatusList);
