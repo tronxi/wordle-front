@@ -15,12 +15,14 @@ export class WordleComponent implements OnInit {
   showWin: boolean;
   showLost: boolean;
   showInvalid: boolean;
+  canEnter: boolean;
 
   constructor(private wordleService: WordleService) {
     this.showAlert = false;
     this.showWin = false;
     this.showLost = false;
     this.showInvalid = false;
+    this.canEnter = true;
     this.numRow = 0;
     this.numLetter = 0;
     this.squares = [];
@@ -50,6 +52,8 @@ export class WordleComponent implements OnInit {
   }
 
   clickEnter(): void {
+    if(!this.canEnter) return;
+    this.canEnter = false;
     if(this.numLetter != 5) {
       this.showAlert = true;
       setTimeout(() => this.showAlert = false, 2000);
@@ -76,6 +80,9 @@ export class WordleComponent implements OnInit {
           this.numLetter = 0;
         }
       }
+      this.canEnter = true;
+    }, error => {
+      this.canEnter = true;
     });
   }
 
