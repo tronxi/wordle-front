@@ -114,7 +114,7 @@ export class WordleComponent implements OnInit {
 
   generateDescription(): void {
     let row = this.numRow + 1;
-    this.description = "Wordle " + row + "/6\n";
+    this.description = "Wordle " + row + "/6\n\n";
     for(let i: number = 0; i <= this.numRow; i++) {
       for(let j: number = 0; j < 5; j++) {
         console.log(this.responses[i][j]);
