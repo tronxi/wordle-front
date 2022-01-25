@@ -16,6 +16,7 @@ export class WordleComponent implements OnInit {
   showWin: boolean;
   showLost: boolean;
   showInvalid: boolean;
+  showCopyAlert: boolean;
   canEnter: boolean;
   statusTypes: Map<string, number>;
   alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
@@ -34,6 +35,7 @@ export class WordleComponent implements OnInit {
     this.showWin = false;
     this.showLost = false;
     this.showInvalid = false;
+    this.showCopyAlert = false;
     this.canEnter = true;
     this.numRow = 0;
     this.numLetter = 0;
@@ -191,5 +193,7 @@ export class WordleComponent implements OnInit {
 
   copyText(): void {
     this.clipboardApi.copy(this.description + "\n" + window.location.href);
+    this.showCopyAlert = true;
+    setTimeout(() => this.showCopyAlert = false, 2000);
   }
 }

@@ -43,6 +43,12 @@
     </div>
   </div>
 
+  <div *ngIf="showCopyAlert" class="square-row">
+    <div class="alert alert-info">
+      <div class="alert-content">Enlace copiado</div>
+    </div>
+  </div>
+
   <div *ngIf="showLost" class="square-row">
     <div class="alert alert-danger">
       <div class="alert-content">Has perdido!</div>
