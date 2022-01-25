@@ -16,6 +16,9 @@ export class WordleComponent implements OnInit {
   showLost: boolean;
   showInvalid: boolean;
   canEnter: boolean;
+  statusTypes: Map<string, number>;
+  alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+  keyboardStatus: Map<string, number>;
 
   constructor(private wordleService: WordleService) {
     this.showAlert = false;
@@ -26,6 +29,15 @@ export class WordleComponent implements OnInit {
     this.numRow = 0;
     this.numLetter = 0;
     this.squares = [];
+    this.statusTypes = new Map<string, number>();
+    this.statusTypes.set("None", 0);
+    this.statusTypes.set("Fail", 1);
+    this.statusTypes.set("Unordered", 2);
+    this.statusTypes.set("Ordered", 3);
+    this.keyboardStatus = new Map<string, number>();
+    for(let letter of this.alphabet){
+      this.keyboardStatus.set(letter, 0);
+    }
     for(let i: number = 0; i < 10; i++) {
       this.squares[i] = [];
       for(let j: number = 0; j< 10; j++) {
@@ -60,7 +72,7 @@ export class WordleComponent implements OnInit {
       this.canEnter = true;
       return;
     }
-    let letters = [];
+    let letters: string[] = [];
     for(let i = 0; i < 5; i++) {
       letters.push(this.squares[this.numRow][i]);
     }
@@ -71,7 +83,8 @@ export class WordleComponent implements OnInit {
         this.canEnter = true;
         return;
       }
-      this.markSquares(response.letterStatusList);
+      this.markSquares(response.letterStatusList, letters);
+      this.printKeyBoard();
       if(response.wordleStatus == "Completed") {
         this.showWin = true;
       } else {
@@ -88,15 +101,30 @@ export class WordleComponent implements OnInit {
     });
   }
 
-  markSquares(letterStatusList: string[]) {
+  markSquares(letterStatusList: string[], letters: string[]): void {
     for(let i = 0; i < 5; i++) {
       let id = this.numRow.toString() + i;
+      let keyboardStatus = this.keyboardStatus.get(letters[i]) || 0;
+      let statusType = this.statusTypes.get(letterStatusList[i]) || 0;
+      if(statusType > keyboardStatus) {
+        this.keyboardStatus.set(letters[i], statusType);
+      }
       if(letterStatusList[i] === "Fail")
         this.markSquareAsFailed(id);
       else if(letterStatusList[i] === "Ordered")
         this.markSquareAsOrdered(id);
       else if(letterStatusList[i] === "Unordered")
         this.markSquareAsUnordered(id);
+    }
+  }
+
+  printKeyBoard(): void {
+    for(let letter of this.alphabet) {
+      let letterStatus = this.keyboardStatus.get(letter);
+      letter = letter.toLowerCase();
+      if(letterStatus == 1) this.markKeyAsFailed(letter);
+      else if (letterStatus == 2) this.markKeyAsUnordered(letter);
+      else if (letterStatus == 3) this.markKeyAsOrdered(letter);
     }
   }
 
