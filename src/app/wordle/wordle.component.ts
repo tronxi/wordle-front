@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {WordleService} from "../services/wordle.service";
+import {ClipboardService} from "ngx-clipboard";
 
 @Component({
   selector: 'app-wordle',
@@ -27,7 +28,8 @@ export class WordleComponent implements OnInit {
   responses: string [];
 
 
-  constructor(private wordleService: WordleService) {
+  constructor(private wordleService: WordleService,
+              private clipboardApi: ClipboardService) {
     this.showAlert = false;
     this.showWin = false;
     this.showLost = false;
@@ -188,4 +190,7 @@ export class WordleComponent implements OnInit {
     keyElement.setAttribute("class", "ordered-key");
   }
 
+  copyText(): void {
+    this.clipboardApi.copy(this.description + "\n" + window.location.href);
+  }
 }

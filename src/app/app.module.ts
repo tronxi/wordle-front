@@ -10,6 +10,8 @@ import { KeyComponent } from './key/key.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import {ShareIconsModule} from "ngx-sharebuttons/icons";
+import {ClipboardModule} from "ngx-clipboard";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {ShareIconsModule} from "ngx-sharebuttons/icons";
     BrowserModule,
     HttpClientModule,
     ShareButtonsModule,
-    ShareIconsModule
+    ShareIconsModule,
+    ClipboardModule,
+    FontAwesomeModule
   ],
   providers: [{
     provide: APP_BASE_HREF,
