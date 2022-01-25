@@ -20,7 +20,7 @@ export class WordleComponent implements OnInit {
   statusTypes: Map<string, number>;
   alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   keyboardStatus: Map<string, number>;
-  buttonsIncluded = ["whatsapp", "telegram", "twitter", "facebook", "reddit"];
+  buttonsIncluded = ["whatsapp", "telegram", "twitter", "reddit"];
   failEmoji = "⬛";
   unorderedEmoji = "🟨";
   orderedEmoji = "🟩";
@@ -119,7 +119,6 @@ export class WordleComponent implements OnInit {
     this.description = "Wordle " + row + "/6\n\n";
     for(let i: number = 0; i <= this.numRow; i++) {
       for(let j: number = 0; j < 5; j++) {
-        console.log(this.responses[i][j]);
         let response = this.responses[i][j];
         if(response === "Fail") this.description += this.failEmoji;
         else if(response === "Unordered") this.description += this.unorderedEmoji;

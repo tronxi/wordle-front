@@ -47,10 +47,8 @@
     <div class="alert alert-danger">
       <div class="alert-content">Has perdido!</div>
       <div class="alert-content">
-        <share-buttons [include]="buttonsIncluded" [description]="description"></share-buttons>
-      </div>
-      <div class="alert-content">
-        <button type="button" class="btn btn-primary" (click)="copyText()"><i class="fas fa-copy"></i></button>
+        <share-buttons class="social-buttons" [include]="buttonsIncluded" [description]="description"></share-buttons>
+        <button type="button" class="btn copy-button" (click)="copyText()"><i class="fas fa-copy"></i></button>
       </div>
     </div>
   </div>
@@ -59,10 +57,8 @@
     <div class="alert alert-success">
       <div class="alert-content">Has ganado!</div>
       <div class="alert-content">
-        <share-buttons [include]="buttonsIncluded" [description]="description"></share-buttons>
-      </div>
-      <div class="alert-content">
-        <button type="button" class="btn btn-primary" (click)="copyText()"><i class="fas fa-copy"></i></button>
+        <share-buttons class="social-buttons" [include]="buttonsIncluded" [description]="description"></share-buttons>
+        <button type="button" class="btn copy-button" (click)="copyText()"><i class="fas fa-copy"></i></button>
       </div>
     </div>
   </div>
