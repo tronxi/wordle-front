@@ -45,13 +45,19 @@
 
   <div *ngIf="showLost" class="square-row">
     <div class="alert alert-danger">
-      Has perdido!
+      <div class="alert-content">Has perdido!</div>
+      <div class="alert-content">
+        <share-buttons [include]="buttonsIncluded" [description]="description"></share-buttons>
+      </div>
     </div>
   </div>
 
   <div *ngIf="showWin" class="square-row">
     <div class="alert alert-success">
-      Has ganado!
+      <div class="alert-content">Has ganado!</div>
+      <div class="alert-content">
+        <share-buttons [include]="buttonsIncluded" [description]="description"></share-buttons>
+      </div>
     </div>
   </div>
 

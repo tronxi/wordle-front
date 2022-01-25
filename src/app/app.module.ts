@@ -8,6 +8,8 @@ import {environment} from "../environments/environment";
 import { SquareComponent } from './square/square.component';
 import { KeyComponent } from './key/key.component';
 import {HttpClientModule} from "@angular/common/http";
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import {ShareIconsModule} from "ngx-sharebuttons/icons";
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    ShareButtonsModule,
+    ShareIconsModule
   ],
   providers: [{
     provide: APP_BASE_HREF,

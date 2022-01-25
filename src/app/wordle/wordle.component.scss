@@ -69,6 +69,12 @@ h1{
   width: 350px;
   display: flex;
   justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.alert-content {
+  text-align: center;
 }
 
 .square {

@@ -4,7 +4,7 @@ import {WordleService} from "../services/wordle.service";
 @Component({
   selector: 'app-wordle',
   templateUrl: './wordle.component.html',
-  styleUrls: ['./wordle.component.css']
+  styleUrls: ['./wordle.component.scss']
 })
 export class WordleComponent implements OnInit {
   element: HTMLElement | undefined;
@@ -19,6 +19,13 @@ export class WordleComponent implements OnInit {
   statusTypes: Map<string, number>;
   alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   keyboardStatus: Map<string, number>;
+  buttonsIncluded = ["whatsapp", "telegram", "twitter", "facebook", "reddit"];
+  failEmoji = "⬛";
+  unorderedEmoji = "🟨";
+  orderedEmoji = "🟩";
+  description = "";
+  responses: string [];
+
 
   constructor(private wordleService: WordleService) {
     this.showAlert = false;
@@ -34,16 +41,18 @@ export class WordleComponent implements OnInit {
     this.statusTypes.set("Fail", 1);
     this.statusTypes.set("Unordered", 2);
     this.statusTypes.set("Ordered", 3);
+    this.responses = [];
     this.keyboardStatus = new Map<string, number>();
     for(let letter of this.alphabet){
       this.keyboardStatus.set(letter, 0);
     }
-    for(let i: number = 0; i < 10; i++) {
+    for(let i: number = 0; i < 6; i++) {
       this.squares[i] = [];
-      for(let j: number = 0; j< 10; j++) {
+      for(let j: number = 0; j< 5; j++) {
         this.squares[i][j] = " ";
       }
-    } }
+    }
+  }
 
   ngOnInit(): void {
 
@@ -83,8 +92,10 @@ export class WordleComponent implements OnInit {
         this.canEnter = true;
         return;
       }
+      this.responses[this.numRow] = response.letterStatusList;
       this.markSquares(response.letterStatusList, letters);
       this.printKeyBoard();
+      this.generateDescription();
       if(response.wordleStatus == "Completed") {
         this.showWin = true;
       } else {
@@ -99,6 +110,21 @@ export class WordleComponent implements OnInit {
     }, error => {
       this.canEnter = true;
     });
+  }
+
+  generateDescription(): void {
+    let row = this.numRow + 1;
+    this.description = "Wordle " + row + "/6\n";
+    for(let i: number = 0; i <= this.numRow; i++) {
+      for(let j: number = 0; j < 5; j++) {
+        console.log(this.responses[i][j]);
+        let response = this.responses[i][j];
+        if(response === "Fail") this.description += this.failEmoji;
+        else if(response === "Unordered") this.description += this.unorderedEmoji;
+        else if(response === "Ordered") this.description += this.orderedEmoji;
+      }
+      this.description += "\n";
+    }
   }
 
   markSquares(letterStatusList: string[], letters: string[]): void {
